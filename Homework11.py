@@ -74,14 +74,13 @@ class AddressBook(UserDict):
     index = 0
     def __next__(self):
         self.list = []
-        self.dict = {}
-        self.list_value = []
         for key, value in self.data.items():
+            self.dict = {}
+            self.list_value = []
             for el in value.phones:
                 self.list_value.append(el.value)
             self.dict.update({key:self.list_value})
             self.list.append(self.dict)
-            
         if self.index >= len(self.list):
             self.index = 0
         element = self.list[self.index:self.index+self.N]
